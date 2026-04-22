@@ -24,3 +24,195 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+.reveal {
+  opacity: 0;
+  transform: var(--reveal-transform, translateY(28px)) scale(0.985);
+  filter: blur(6px);
+  transition: opacity 700ms ease, transform 700ms cubic-bezier(0.22, 1, 0.36, 1), filter 700ms ease;
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform, filter;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translate(0, 0) scale(1);
+  filter: blur(0);
+}
+
+@keyframes floatSoft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes shineSlide {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+body.dark-theme {
+  --background: #0f1115;
+  --foreground: #f2f4f8;
+  background: #0f1115;
+  color: #f2f4f8;
+}
+
+body.dark-theme .hero-greeting,
+body.dark-theme .hero-description,
+body.dark-theme .about-content p,
+body.dark-theme .about-header p,
+body.dark-theme .skill-header p,
+body.dark-theme .projects-header p,
+body.dark-theme .experiance-header p,
+body.dark-theme .education-header p,
+body.dark-theme .leadership-header p,
+body.dark-theme .contact-header p,
+body.dark-theme .project-content p,
+body.dark-theme .skill-tags span,
+body.dark-theme .education-content li,
+body.dark-theme .experiance-card li,
+body.dark-theme .leadership-card li,
+body.dark-theme .contact-info p,
+body.dark-theme .contact-info p a,
+body.dark-theme .contact-info p strong,
+body.dark-theme .contact-socials a,
+body.dark-theme .form-status,
+body.dark-theme .site-footer,
+body.dark-theme .project-modal p,
+body.dark-theme .project-modal-list > li,
+body.dark-theme .project-modal-sublist li,
+body.dark-theme .project-modal-gallery figcaption,
+body.dark-theme .education-content span,
+body.dark-theme .experiance-card span,
+body.dark-theme .leadership-card span {
+  color: #c4c9d4;
+}
+
+body.dark-theme .hero-role,
+body.dark-theme .education-content h4,
+body.dark-theme .experiance-card h4,
+body.dark-theme .leadership-card h3,
+body.dark-theme .project-content h3,
+body.dark-theme .contact-info h3,
+body.dark-theme .nav-links a {
+  color: #f2f4f8;
+}
+
+body.dark-theme .btn-secondary {
+  color: #d9c98f;
+  border-color: #d9c98f;
+}
+
+body.dark-theme .btn-secondary:hover {
+  background-color: #202634;
+}
+
+body.dark-theme .project-card,
+body.dark-theme .skill-card,
+body.dark-theme .education-card,
+body.dark-theme .experiance-card,
+body.dark-theme .leadership-card,
+body.dark-theme .leadership-gallery-item {
+  background: #171b24;
+  border-color: #2c3445;
+}
+
+body.dark-theme .project-visual,
+body.dark-theme .accent-one,
+body.dark-theme .accent-two,
+body.dark-theme .accent-three {
+  background: #202634;
+}
+
+body.dark-theme .project-tags span,
+body.dark-theme .skill-tags span,
+body.dark-theme .leadership-badge,
+body.dark-theme .project-modal-tags span {
+  background: #202634;
+  border-color: #3a465f;
+  color: #d9c98f;
+}
+
+body.dark-theme .project-read-more {
+  color: #d9c98f;
+}
+
+body.dark-theme .project-modal {
+  background: #171b24;
+  border-color: #d2b85e;
+}
+
+body.dark-theme .project-modal-close {
+  color: #d9c98f;
+}
+
+body.dark-theme .contact-form input,
+body.dark-theme .contact-form textarea {
+  background: #171b24;
+  color: #f2f4f8;
+  border-color: #2e374b;
+}
+
+body.dark-theme .contact-form input::placeholder,
+body.dark-theme .contact-form textarea::placeholder {
+  color: #94a0b5;
+}
+
+body.dark-theme .contact-form button {
+  color: #0f1115;
+}
+
+body.dark-theme .gallery-arrow {
+  background: #202634;
+  border-color: #3a465f;
+  color: #d9c98f;
+}
+
+body.dark-theme .hero-socials a,
+body.dark-theme .contact-socials a {
+  background: #202634;
+  border-color: #3a465f;
+  color: #f2f4f8;
+}
+
+body.dark-theme .hero-socials a:hover,
+body.dark-theme .contact-socials a:hover {
+  background: #2a3244;
+  border-color: #d9c98f;
+  color: #d9c98f;
+}
+
+body.dark-theme .lightbox-close {
+  background: #202634;
+  border-color: #d9c98f;
+  color: #f2f4f8;
+}
+
+body.dark-theme .site-footer {
+  border-top-color: #2c3445;
+}
