@@ -35,38 +35,34 @@ export default function ContactSection() {
       setIsSending(true);
       setStatusMessage("");
 
-      const response = await fetch(
-        "https://formsubmit.co/ajax/bilaltariq2k3@gmail.com",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: JSON.stringify({
-            name,
-            email,
-            subject,
-            message,
-            _subject: `Portfolio Contact: ${subject}`,
-            _captcha: "false",
-          }),
-        }
-      );
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({ name, email, subject, message }),
+      });
 
-      if (!response.ok) {
-        throw new Error("Request failed");
+      const result = await response.json();
+
+      if (!response.ok || !result?.ok) {
+        throw new Error(result?.message || "Request failed");
       }
 
-      setStatusMessage("Message sent successfully.");
+      setStatusMessage(result?.message || "Message sent successfully.");
       setFormData({
         name: "",
         email: "",
         subject: "",
         message: "",
       });
-    } catch {
-      setStatusMessage("Unable to send message right now. Please try again.");
+    } catch (error) {
+      setStatusMessage(
+        error instanceof Error
+          ? error.message
+          : "Unable to send message right now. Please try again."
+      );
     } finally {
       setIsSending(false);
     }
